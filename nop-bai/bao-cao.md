@@ -66,3 +66,13 @@ tăng khiêm tốn này chủ yếu do mô hình quan sát thêm nhiều mẫu l
 lượng, chứ không phải do dữ liệu mới mang thêm thông tin/phân phối khác. Quan trọng hơn con số:
 quy trình tự động đã chạy đúng — commit dữ liệu mới tự kích hoạt toàn bộ pipeline (Unit Test →
 Train → Quality Gate → Release) không cần thao tác thủ công.
+
+---
+
+## 5. Phần Bonus Đã Thực Hiện
+
+- [x] Bonus 1 - DagsHub: MLflow tracking chuyển sang server DagsHub trong CI, xem tại https://dagshub.com/minhquang1604/TRACK2_Day21_2A202601884_CaoMinhQuang.mlflow
+- [x] Bonus 2 - Ngưỡng tối ưu 0.30 cho f1=0.7537, cao hơn ngưỡng mặc định 0.5 (f1=0.7354).
+- [x] Bonus 3 - `outputs/detail.txt` (confusion matrix + precision/recall/lớp) lưu làm CI artifact.
+- [x] Bonus 4 - Job Rollback Guard: chặn promote nếu f1 mới thấp hơn model đang chạy trên S3.
+- [x] Bonus 5 - Cảnh báo drift nếu tỷ lệ lớp dương lệch >5pp so với 24.8%; ghi `positive_ratio` vào report.json.
