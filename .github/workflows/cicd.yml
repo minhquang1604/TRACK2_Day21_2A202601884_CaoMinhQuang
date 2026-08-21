@@ -66,9 +66,15 @@ jobs:
           python -c "
           import json, os
           creds = json.loads(os.environ['STORAGE_CREDENTIALS'])
+          key_id = creds['aws_access_key_id']
+          secret = creds['aws_secret_access_key']
+          # QUAN TRONG: gia tri parse tu JSON KHONG duoc GitHub tu dong che trong
+          # log (chi gia tri secrets.X nguyen goc moi duoc che). Phai tu them mask.
+          print(f'::add-mask::{key_id}')
+          print(f'::add-mask::{secret}')
           with open(os.environ['GITHUB_ENV'], 'a') as f:
-              f.write(f\"AWS_ACCESS_KEY_ID={creds['aws_access_key_id']}\n\")
-              f.write(f\"AWS_SECRET_ACCESS_KEY={creds['aws_secret_access_key']}\n\")
+              f.write(f'AWS_ACCESS_KEY_ID={key_id}\n')
+              f.write(f'AWS_SECRET_ACCESS_KEY={secret}\n')
           "
 
       - name: Pull data with DVC
@@ -166,9 +172,15 @@ jobs:
           python -c "
           import json, os
           creds = json.loads(os.environ['STORAGE_CREDENTIALS'])
+          key_id = creds['aws_access_key_id']
+          secret = creds['aws_secret_access_key']
+          # QUAN TRONG: gia tri parse tu JSON KHONG duoc GitHub tu dong che trong
+          # log (chi gia tri secrets.X nguyen goc moi duoc che). Phai tu them mask.
+          print(f'::add-mask::{key_id}')
+          print(f'::add-mask::{secret}')
           with open(os.environ['GITHUB_ENV'], 'a') as f:
-              f.write(f\"AWS_ACCESS_KEY_ID={creds['aws_access_key_id']}\n\")
-              f.write(f\"AWS_SECRET_ACCESS_KEY={creds['aws_secret_access_key']}\n\")
+              f.write(f'AWS_ACCESS_KEY_ID={key_id}\n')
+              f.write(f'AWS_SECRET_ACCESS_KEY={secret}\n')
           "
 
       - name: Compare with currently deployed model and promote if not worse
